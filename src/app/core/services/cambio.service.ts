@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class CambioService {
-  urlApi = `http://data.fixer.io/api/latest?access_key=${environment.apiKey}`;
+  urlApi = `https://data.fixer.io/api/latest?access_key=${environment.apiKey}`;
 
   constructor(private http: HttpClient) {}
 
