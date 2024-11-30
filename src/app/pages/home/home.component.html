@@ -1,0 +1,74 @@
+<div class="flex flex-col items-center justify-center min-h-screen bg-[#1a1a1e]">
+  <div class="w-full max-w-[750px] bg-[#262629] rounded-lg shadow-lg border border-[#323336]">
+    <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-[#323336] px-5 py-4">
+      <h2 class="text-base sm:text-lg font-semibold text-gray-300">Conversor de Moeda</h2>
+      
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-2">
+          <span class="text-gray-300">Atualização:</span>
+          <span class="text-gray-300">{{ objCambio.date | date:'mediumDate' }}</span>
+        </div>
+
+        <button
+          class="px-3 py-2 bg-[#1e1e21] rounded-lg text-gray-300 hover:bg-gray-600 focus:outline-none focus:ring focus:ring-blue-500"
+          (click)="findAll()"
+        >
+          Atualizar
+        </button>
+      </div>
+    </div>
+
+    <div class="px-5 py-4 relative">
+      <div class="flex flex-wrap items-center space-x-4 bg-[#1e1e21] rounded-lg p-2 border border-[#323336] mb-3">
+        <input
+          type="number"
+          class="flex-1 p-3 bg-[#1e1e21] text-gray-100 rounded-lg focus:outline-none focus:ring focus:ring-blue-500 sm:w-[250px] w-full"
+          [(ngModel)]="valorOrigem"
+        />
+        <div class="flex items-center space-x-2 bg-[#0f0f10] text-gray-300 px-3 py-1 rounded-lg border border-[#323336]">
+          <div class="bg-[#1e1e21] rounded-full text-gray-300 hover:bg-gray-600 focus:outline-none focus:ring focus:ring-blue-500 flex items-center justify-center w-[30px] h-[30px]">
+            {{ getFirstLetter(moedaOrigem) }}
+          </div>
+          <select
+            [(ngModel)]="moedaOrigem"
+            class="bg-[#0f0f10] rounded-lg px-2 py-2"
+            (change)="calculationCambio()"
+          >
+            <option *ngFor="let moeda of moedas" [value]="moeda">{{ moeda }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <button
+          (click)="inversorCambio()"
+          class="p-4 sm:p-2 bg-[#1e1e21] rounded-full text-gray-300 hover:bg-gray-600 focus:outline-none focus:ring focus:ring-blue-500 flex align-center justify-center border border-[#323336]"
+        >
+          <mat-icon class="text-gray-400">syncAltIcon</mat-icon>
+        </button>
+      </div>
+
+      <div class="flex flex-wrap items-center space-x-4 bg-[#1e1e21] rounded-lg p-2 border border-[#323336] mt-3">
+        <input
+          type="number"
+          [(ngModel)]="valorDestino"
+          class="flex-1 p-3 bg-[#1e1e21] text-gray-100 rounded-lg focus:outline-none focus:ring focus:ring-blue-500 sm:w-[250px] w-full"
+          value="1"
+          disabled
+        />
+        <div class="flex items-center space-x-2 bg-[#0f0f10] text-gray-300 px-3 py-1 rounded-lg border border-[#323336]">
+          <div class="bg-[#1e1e21] rounded-full text-gray-300 hover:bg-gray-600 focus:outline-none focus:ring focus:ring-blue-500 flex items-center justify-center w-[30px] h-[30px]">
+            {{ getFirstLetter(moedaDestino) }}
+          </div>
+          <select
+            [(ngModel)]="moedaDestino"
+            class="bg-[#0f0f10] rounded-lg px-2 py-2"
+            (change)="calculationCambio()"
+          >
+            <option *ngFor="let moeda of moedas" [value]="moeda">{{ moeda }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
