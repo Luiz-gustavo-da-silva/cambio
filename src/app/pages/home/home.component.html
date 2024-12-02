@@ -24,6 +24,7 @@
           type="number"
           class="flex-1 p-3 bg-[#1e1e21] text-gray-100 rounded-lg focus:outline-none focus:ring focus:ring-blue-500 sm:w-[250px] w-full"
           [(ngModel)]="valorOrigem"
+          (input)="calculationCambio()"
         />
         <div class="flex items-center space-x-2 bg-[#0f0f10] text-gray-300 px-3 py-1 rounded-lg border border-[#323336]">
           <div class="bg-[#1e1e21] rounded-full text-gray-300 hover:bg-gray-600 focus:outline-none focus:ring focus:ring-blue-500 flex items-center justify-center w-[30px] h-[30px]">
